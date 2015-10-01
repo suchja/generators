@@ -23,6 +23,7 @@ Here I'll document goals for the improvement, once I'm clear on what exactly I s
  -	Does `IPConnection` violate the Interface Segregation Principle? If yes it might be an indicator, that it is not good. See this [analysis](http://fagblogg.mesan.no/how-bad-is-smelly-code/).
  -	Another principle to consider is Single Responsibility Principle (SRP). Does `IPConnection` have only a single responsibility? See [here](http://blog.millermedeiros.com/keep-your-modules-and-functions-small/) for details.
 2.	Check whether there will be problems with the build, if `IPConnection.cs` is split up into several files.
+3.	Install Screenflow and capture all refactoring sessions in order to further analyse and document them afterwards.
 
 # Open Issues
 
