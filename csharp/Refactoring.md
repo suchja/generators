@@ -18,10 +18,7 @@ Here I'll document goals for the improvement, once I'm clear on what exactly I s
 
 # ToDos
 
--	Define why exactly the large size of the file is an issue.
- -	Maybe it is not the size. See this [answer](http://programmers.stackexchange.com/a/177102). Probably I should ask wehther everything in that file does really belong to the `IPConnectoin` class.
- -	Does `IPConnection` violate the Interface Segregation Principle? If yes it might be an indicator, that it is not good. See this [analysis](http://fagblogg.mesan.no/how-bad-is-smelly-code/).
- -	Another principle to consider is Single Responsibility Principle (SRP). Does `IPConnection` have only a single responsibility? See [here](http://blog.millermedeiros.com/keep-your-modules-and-functions-small/) for details.
+-	Check these principles and apply them to `IPConnection`.
 -	Check whether there will be problems with the build, if `IPConnection.cs` is split up into several files.
 -	Install Screenflow and capture all refactoring sessions in order to further analyse and document them afterwards.
 -	Document key responsibilities of `IPConnection` class and the related methods.
@@ -35,3 +32,9 @@ Here I'll document goals for the improvement, once I'm clear on what exactly I s
 # Open Issues
 
 # Ideas
+
+-	Define why exactly the large size of the file is an issue.
+ -	Maybe it is not the size. See this [answer](http://programmers.stackexchange.com/a/177102). Probably I should ask wehther everything in that file does really belong to the `IPConnectoin` class.
+ -	Does `IPConnection` violate the Interface Segregation Principle? If yes it might be an indicator, that it is not good. See this [analysis](http://fagblogg.mesan.no/how-bad-is-smelly-code/).
+ -	Another principle to consider is Single Responsibility Principle (SRP). Does `IPConnection` have only a single responsibility? See [here](http://blog.millermedeiros.com/keep-your-modules-and-functions-small/) for details.
+
