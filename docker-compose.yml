@@ -1,0 +1,9 @@
+GenerateBinding:
+  image: python:2.7.10
+  volumes:
+    - .:/usr/src/myapp
+  working_dir: /usr/src/myapp
+  command: /bin/bash
+  environment:
+    - TZ=Europe/Berlin
+    - LANG=C.UTF-8
