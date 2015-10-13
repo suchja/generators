@@ -12,7 +12,7 @@ Why is it a good idea to use docker for the tinkerforge language bindings? I see
 
 ## Development environment (Use Case #1)
 
-The generators are completely developed in Python. That means developing a language binding requires a development environment for Python. This is well documented in the [generator's Readme](https://github.com/Tinkerforge/generators). Looking further into the first use case it appears, that not only Python is required, but also the technology for required for each of the language bindings. Otherwise it is possible to change the generator's code, but it is not possible to test those changes.
+The generators are completely developed in Python. That means developing a language binding requires a development environment for Python. This is well documented in the [generator's Readme](https://github.com/Tinkerforge/generators). Looking further into the first use case it appears, that not only Python is required, but also the technology required for each of the language bindings. Otherwise it is possible to change the generator's code, but it is not possible to test those changes.
 
 So we can say it is required to have a development environment for Python to change and recompile any/all of the available generators. Basically this environment is required to ensure that the changes are compile-clean, but nothing more.
 
