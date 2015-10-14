@@ -32,3 +32,5 @@ For changing any of the generators the following functionality is required:
 -	Python to generate a new version of the language binding containing the changes
 -	Editor to change python code of the generators, bricks and bricklets.
 -	Editor to change the language specific parts of the language binding
+-	Execution environment according to the language binding
+-	Environment containing brickv, brickd and the hardware for testing an example attached to it. A better alternative would be to have unit and integration, which do not require the hardware. What would be a good way to simulate the hardware? Could we use something like a Mock brickd for examples? Brickd is written in pure C.
