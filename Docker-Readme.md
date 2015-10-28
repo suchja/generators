@@ -63,6 +63,23 @@ Here some initial thought about how to design a solution for the use cases:
 -	One idea for having a container, which can directly publish releases to github, is to bind-mount ssh-keys from either a host dir or from a dedicated data-container. **Attention:** It seems like the releases on github are only zipped source code files. The final binaries are only available from the Tinkerforge website. What's the intention of the zip files on GitHub?
 -	It is probably a good idea to have a data-container, which initially receives the source code either from master or from development branch. All other development / build container will link this data-container and use the sources from there and also add their output (e.g. binaries) to that container. So it is something like a central data hub for all containers.
 
+# Current State & Next Steps
+
+I'm working on this document as well as on the Dockerfiles and stuff around it. So this section basically shows me what I'm working on and what are the next steps.
+
+## Activities I'm working on
+
+-	Done: Build Dockerfile for compiling C# language binding
+-	Understand how to get source code into containers [Discussion in Docker Forums](https://forums.docker.com/t/best-practices-for-getting-code-into-a-container-git-clone-vs-copy-vs-data-container/4077)
+
+## Next Steps
+
+-	Try setting up a data container with the complete source code (including examples) and a volume for binaries
+-	Build C# language binding from changed master branch with travis using my container
+-	Test created binaries for C# as part of the travis build
+-	Try using Makefile based approach from docker development for building / developing
+-	Setup a completely containerized runtime environment for TF
+
 # Other Ideas
 
 ## Production Environment
