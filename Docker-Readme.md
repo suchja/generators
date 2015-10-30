@@ -62,6 +62,12 @@ Here some initial thought about how to design a solution for the use cases:
 -	Seems like python is always required or I need to replace the existing `generate_..._zip.py`. So that would basically mean I need new Images for each langauge binding which consist of python and the biuld/execution environment for the langauge.
 -	One idea for having a container, which can directly publish releases to github, is to bind-mount ssh-keys from either a host dir or from a dedicated data-container. **Attention:** It seems like the releases on github are only zipped source code files. The final binaries are only available from the Tinkerforge website. What's the intention of the zip files on GitHub?
 -	It is probably a good idea to have a data-container, which initially receives the source code either from master or from development branch. All other development / build container will link this data-container and use the sources from there and also add their output (e.g. binaries) to that container. So it is something like a central data hub for all containers.
+-	I guess the following Dockerfile / Images are required:
+ -	Dockerfile cloning all repositories as basis for a data-only-container with the required source code. -> tf-root dir
+ -	Dockerfile for building each of the language binding. -> in the language binding dir
+ -	There is probably no need for a Dockerfile in the generators root dir.
+ -	brickv as well as brickd will get their own Dockerfile for building and running.
+ -	define how to handle firmware build and deploy process
 
 # Current State & Next Steps
 
@@ -72,12 +78,12 @@ I'm working on this document as well as on the Dockerfiles and stuff around it. 
 -	Done: Build Dockerfile for compiling C# language binding
 -	Understand how to get source code into containers [Discussion in Docker Forums](https://forums.docker.com/t/best-practices-for-getting-code-into-a-container-git-clone-vs-copy-vs-data-container/4077)
 -	Try setting up a data container with the complete source code (including examples) and a volume for binaries
- -	Ensure that `git clone` is always executed independently of the cache [compare this article](http://thenewstack.io/understanding-the-docker-cache-for-faster-builds/).
- -	Avoid copying downloaded data when container is started from image [as outlined in this article](https://jpetazzo.github.io/2015/01/19/dockerfile-and-data-in-volumes/).
- -	Do everything inside a container to be fully host independent.
+ -	Done: Ensure that `git clone` is always executed independently of the cache [compare this article](http://thenewstack.io/understanding-the-docker-cache-for-faster-builds/).
+ -	Done: Avoid copying downloaded data when container is started from image [as outlined in this article](https://jpetazzo.github.io/2015/01/19/dockerfile-and-data-in-volumes/).
+ -	Done: Do everything inside a container to be fully host independent.
  -	Step #1 - write Dockerfile based on the python image (already containing git) and cloning all required repositories [see build_environment_setup.sh](https://github.com/Tinkerforge/generators/blob/master/build_environment_setup.sh).
- -	Step #2 - Create Makefile with target for building this container
- -	Step #3 - Update to initially create the container as data-only-container an declare a volume for source and for release
+ -	Done: Step #2 - Create Makefile with target for building this container
+ -	Done: Step #3 - Update to initially create the container as data-only-container an declare a volume for source and for release
 
 ## Next Steps
 
