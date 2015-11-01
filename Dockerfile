@@ -1,6 +1,13 @@
 FROM python:2.7.10
 MAINTAINER jan@lernmoment.de
 
-RUN mkdir -p /src/tf/
-WORKDIR /src/tf
-RUN git clone https://github.com/suchja/generators.git
+ENV GIT_USER tinkerforge
+ENV TF_HOME /src/tf
+
+RUN mkdir -p /scripts
+COPY clone_all_gits.sh /scripts/
+RUN chmod +x /scripts/clone_all_gits.sh
+
+# It's important that this is done via RUN and not CMD, because we like
+# to have it executed during build phase and not run phase!
+RUN /scripts/clone_all_gits.sh
