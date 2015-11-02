@@ -85,6 +85,10 @@ I'm working on this document as well as on the Dockerfiles and stuff around it. 
  -	Done: Step #2 - Create Makefile with target for building this container
  -	Done: Step #3 - Update to initially create the container as data-only-container an declare a volume for source and for release
 
+## Open Issues
+
+-	Cloning all git repositories into a data-only-container takes a lot of time. The question is whether this is an issue and if it is, how to improve the performance of this.
+
 ## Next Steps
 
 -	Build C# language binding from changed master branch with travis using my container
