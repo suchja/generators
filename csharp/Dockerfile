@@ -1,4 +1,4 @@
-FROM python:2.7.10-wheezy
+FROM tfdata
 MAINTAINER jan@lernmoment.de
 
 #based on Dockerfile for official mono image
