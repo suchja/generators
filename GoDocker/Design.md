@@ -11,6 +11,7 @@ Here some initial thought about how to design a solution for the use cases:
  -	There is probably no need for a Dockerfile in the generators root dir.
  -	brickv as well as brickd will get their own Dockerfile for building and running.
  -	define how to handle firmware build and deploy process
+-	With the latest release of Docker (1.9.0) *Persistant Storage* was improved. So far only few information is available. It seems to be all about *volume plugins*. However, I still have not seen any good explanation or example. This [article](https://blog.docker.com/2015/06/extending-docker-with-plugins/) is one of the few resources about this topic.
 
 ## Source-code in base image approach
 
@@ -45,11 +46,16 @@ Allows switching to different versions quite easily.
 
 ### Disadvantages of this approach
 
-It seems strange to me that the *Tinkerforge source code* image, which probably changes frequently is a base image for the *Tooling for language bindings* image, which will not change frequently. *Is it better to have the image with the most frequent changes as top most image?*
+It seems strange to me that the *Tinkerforge source code* image, which probably changes frequently is a base image for the *Tooling for language bindings* image, which will not change frequently. 
+
+This in fact is not a good design for docker's cache. The image *Tooling for language binding* needs to be built / pulled exactly once on each host. It should not change except a new python version or language specific tooling version is required. Fully utilizing the caching mechanism means that all layers of an image that will not or seldomly change should be built first. So it is really easy to rebuild only the parts that are changing.
 
 From a performance point of view this might be problematic due to frequent copying of all the Tinkerforge source code repositories. According to Jerome in [this article](https://jpetazzo.github.io/2015/01/19/dockerfile-and-data-in-volumes/) it is better to have big data separated from the service container. He proposes to first build the service container and based on that image define a data-only-container with the data in it.
 
 Avoiding this performance issue might be possible for this approach by simply not using a volume. As long as the directory containing the data is not defined as a volume, there should be no performance issue due to copying all data when starting a container from the image.
+
+Another issue to consider especially for Tinkerforge is the size of the repositories. There are repositories with a huge amount of data (e.g. `doc`). If it is required to frequently `git clone` the complete repository it takes a lot of time.
+*I'm not sure how to best deal with this*.
 
 ### Conclusion
 
