@@ -17,6 +17,8 @@ I'm working on this document as well as on the Dockerfiles and stuff around it. 
 ## Open Issues
 
 -	Cloning all git repositories into a data-only-container takes a lot of time. The question is whether this is an issue and if it is, how to improve the performance of this.
+-	Currently I don't understand the dependencies between all the tinkerforge components. In `build_environment_setup.sh` all repositories are cloned. Hoewever, at least for building a language binding (including documentation), there are probably several repositories which are not required. The problem with cloning all repositories is that it takes a lot of space. Currently the image with all repositories is *2.7GB*, while its base image is *0.675GB*. So we do have more than *2GB* of data cloned from GitHub. Besides the size this is also an issue of time, because it takes pretty long to download all repositories.
+ -	The `doc` repository seems to be the largest by far. It contains tons of images and other data. So when is this needed and how can we handle it?
 
 ## Next Steps
 
