@@ -1,4 +1,4 @@
-FROM python:2.7.10
+FROM python:2.7.10-wheezy
 MAINTAINER jan@lernmoment.de
 
 ENV GIT_USER tinkerforge
