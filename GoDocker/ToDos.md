@@ -22,6 +22,7 @@ I'm working on this document as well as on the Dockerfiles and stuff around it. 
  -	Although each language binding contains a python script to generate the language specific documentation, that documentation is not part of the language binding release. The release only contains the build binaries, examples and source code.
  -	It seems that `doc` can be used by developers if they require a language specific documentation. Additionally this documentation is provided on the [Tinkerforge homepage](http://www.tinkerforge.com/en/doc/Software/API_Bindings_CSharp.html#api-reference-and-examples).
  -	It is important to note that the language specific documentation will be generated into a `doc` subfolder of the language binding. -> When and from where is this executed?
+-	Testing images. It is good practice to test the created images before they are used in development or production environment. The official docker library project contains some examples and a [documentation](https://github.com/docker-library/official-images/tree/master/test) how to test images. 
 
 ## Next Steps
 
