@@ -48,7 +48,7 @@ Allows switching to different versions quite easily.
 
 It seems strange to me that the *Tinkerforge source code* image, which probably changes frequently is a base image for the *Tooling for language bindings* image, which will not change frequently. 
 
-This in fact is not a good design for docker's cache. The image *Tooling for language binding* needs to be built / pulled exactly once on each host. It should not change except a new python version or language specific tooling version is required. Fully utilizing the caching mechanism means that all layers of an image that will not or seldomly change should be built first. So it is really easy to rebuild only the parts that are changing.
+This in fact is not a good design for docker's cache. The image *Tooling for language binding* needs to be built / pulled exactly once on each host. It should not change except a new python version or language specific tooling version is required. Fully utilizing the caching mechanism means that all layers of an image that will not or seldomly change should be built first. So it is really easy to rebuild only the parts that are changing. See the discussion in [this article](https://github.com/docker-library/official-images#cacheability).
 
 From a performance point of view this might be problematic due to frequent copying of all the Tinkerforge source code repositories. According to Jerome in [this article](https://jpetazzo.github.io/2015/01/19/dockerfile-and-data-in-volumes/) it is better to have big data separated from the service container. He proposes to first build the service container and based on that image define a data-only-container with the data in it.
 
