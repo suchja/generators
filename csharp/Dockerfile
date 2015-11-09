@@ -1,4 +1,4 @@
-FROM tfdata
+FROM python:2.7.10-wheezy
 MAINTAINER jan@lernmoment.de
 
 #based on Dockerfile for official mono image
@@ -18,3 +18,10 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/3.10
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN mozroots --machine --import --sync --quiet
+
+ENV GIT_USER tinkerforge
+ENV TF_HOME /src/tf
+
+RUN mkdir -p $TF_HOME \
+	&& cd $TF_HOME \
+	&& git clone https://github.com/$GIT_USER/generators.git
