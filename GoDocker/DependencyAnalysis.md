@@ -19,3 +19,21 @@ The following scripts can be run with solely the `generators` repository:
 For the `test_csharp_bindings.py` script additionally the repositories `wheather-station` and `hardware-hacking` are required.
 
 Finally there is the language specific generation of documentation in the script `generate_csharp_doc.py`. This requires all bricks and bricklets repositories.
+
+## brickd - Brick Daemon
+
+The central component for communication between computer and bricks. This requires the following tools for building:
+
+-	gcc (tried with version 4.9)
+-	make
+-	libc6-dev
+
+Additionally those libs are needed:
+
+-	pkg-config
+-	libusb-1.0-0-dev
+-	libudev-dev 
+
+The only dependency to any other Tinkerforge component is the `daemonlib`. Source code contained in the repository called `daemonlib` needs to be cloned, copied or linked into `brickd`'s source tree.
+
+Building the component simply requires calling `make` and `make install`.
