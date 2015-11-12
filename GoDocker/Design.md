@@ -12,6 +12,10 @@ Here some initial thought about how to design a solution for the use cases:
  -	brickv as well as brickd will get their own Dockerfile for building and running.
  -	define how to handle firmware build and deploy process
 -	With the latest release of Docker (1.9.0) *Persistant Storage* was improved. So far only few information is available. It seems to be all about *volume plugins*. However, I still have not seen any good explanation or example. This [article](https://blog.docker.com/2015/06/extending-docker-with-plugins/) is one of the few resources about this topic.
+-	Having either a Dockerfile or Makefile (maybe even both) in each component repository would properly document the dependencies. Such a Dockerfile would obviously be targeted at the development stage, but that should be okay. This could work in the following way (example based on C# language binding)
+ -	in `generators/csharp` repository a Dockerfile defines the execution environment (mono and other required stuff) and gets the latest source code via `git clone`.
+ -	that dockerfile is created via `docker build` when changes from git repository need to be fetched.
+ -	dependencies for building the language binding in the container are `wheather-station` and `hardware-hacking` as well as all bricks and bricklets. Now I could have separate Dockerfile and thus images for all of them (or maybe put all bricks and bricklets into one image). 
 
 ## Source-code in base image approach
 
